@@ -82,7 +82,9 @@ function transformation(watermarkBuffer, maxSize, positionFunction, scale) {
       }
 
       // Size of the jpeg stream is just ~ 15% of the raw PNG buffer
-      canvas.jpegStream()
+      canvas.jpegStream({
+        progressive: true
+      })
       .on('data', (chuck) => {
         this.push(chuck);
       })

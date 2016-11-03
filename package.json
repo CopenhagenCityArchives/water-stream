@@ -1,0 +1,27 @@
+{
+  "name": "water-stream",
+  "version": "1.0.0",
+  "description": "A transformation stream that applies watermarks to images without filesystem I/O",
+  "main": "transformation.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/collections-online/water-stream.git"
+  },
+  "keywords": [
+    "stream",
+    "watermark",
+    "images"
+  ],
+  "author": "Kræn Hansen <kraen@socialsquare.dk> (Socialsquare / Collections Online)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/collections-online/water-stream/issues"
+  },
+  "homepage": "https://github.com/collections-online/water-stream#readme",
+  "dependencies": {
+    "canvas": "^1.6.2"
+  }
+}

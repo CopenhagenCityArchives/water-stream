@@ -44,6 +44,9 @@ function transformation(watermarkBuffer, maxSize, positionFunction, scale) {
   } else if(!positionFunction) {
     positionFunction = bottomRightPosition;
   }
+  if(typeof(maxSize) !== 'number') {
+    maxSize = Number.MAX_VALUE;
+  }
   var imageData = [];
   return new Transform({
     transform(chunk, encoding, callback) {

@@ -99,3 +99,4 @@ function transformation(watermarkBuffer, maxSize, positionFunction, scale) {
 }
 
 module.exports.transformation = transformation;
+module.exports.cached = require('./cached.js');

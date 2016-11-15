@@ -2,15 +2,15 @@
 
 const streamBuffers = require('stream-buffers');
 const NodeCache = require('node-cache');
-const cache = new NodeCache();
 const Writable = require('stream').Writable;
+
+let cache;
 
 module.exports = (key, res, missCallback) => {
   var stream = new streamBuffers.ReadableStreamBuffer();
 
   var cachedBuffer = cache.get(key);
   if(cachedBuffer) {
-    console.log('Hit!', key);
     stream.pipe(res);
     stream.put(cachedBuffer);
     stream.stop();
@@ -31,3 +31,9 @@ module.exports = (key, res, missCallback) => {
     missCallback(writableStream);
   }
 };
+
+module.exports.config = (options) => {
+  cache = new NodeCache(options);
+};
+// Start by configuring without any options
+module.exports.config();

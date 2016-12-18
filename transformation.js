@@ -46,6 +46,8 @@ function transformation(watermarkBuffer, maxSize, positionFunction, scale) {
   }
   if(typeof(maxSize) !== 'number') {
     maxSize = Number.MAX_VALUE;
+  } else if(maxSize <= 0) {
+    throw new Error('maxSize must be a positive integer');
   }
   var imageData = [];
   return new Transform({

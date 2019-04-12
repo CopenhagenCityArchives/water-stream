@@ -6,10 +6,10 @@ const Transform = require('stream').Transform;
 
 const WATERMARK_SCALE = 0.33; // 33% of the width of the thumbnail
 
-function bottomRightPosition(img, watermarkImg) {
+function bottomRightPosition(img, watermarkImg, scale = WATERMARK_SCALE) {
   var watermarkRatio = watermarkImg.height / watermarkImg.width;
 
-  var watermarkWidth = img.width * WATERMARK_SCALE;
+  var watermarkWidth = img.width * scale;
   var watermarkHeight = watermarkWidth * watermarkRatio;
 
   return {
@@ -22,10 +22,10 @@ function bottomRightPosition(img, watermarkImg) {
 
 module.exports.bottomRightPosition = bottomRightPosition;
 
-function middleCenterPosition(img, watermarkImg) {
+function middleCenterPosition(img, watermarkImg, scale = WATERMARK_SCALE) {
   var watermarkRatio = watermarkImg.height / watermarkImg.width;
 
-  var watermarkWidth = img.width * WATERMARK_SCALE;
+  var watermarkWidth = img.width * scale;
   var watermarkHeight = watermarkWidth * watermarkRatio;
 
   return {
@@ -77,7 +77,7 @@ function transformation(watermarkBuffer, maxSize, positionFunction, scale) {
       if(watermarkBuffer && positionFunction) {
         var watermarkImg = new Image;
         watermarkImg.src = watermarkBuffer;
-        var position = positionFunction(newSize, watermarkImg);
+        var position = positionFunction(newSize, watermarkImg, scale);
         // Draw the watermark in the
         ctx.drawImage(watermarkImg,
                       position.left,

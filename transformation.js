@@ -29,8 +29,8 @@ function middleCenterPosition(img, watermarkImg, scale = WATERMARK_SCALE) {
   var watermarkHeight = watermarkWidth * watermarkRatio;
 
   return {
-    left: img.width/2 - watermarkWidth / 2,
-    top: img.height/2 - watermarkHeight / 2,
+    left: img.width / 2 - watermarkWidth / 2,
+    top: img.height / 2 - watermarkHeight / 2,
     width: watermarkWidth,
     height: watermarkHeight
   };
@@ -39,14 +39,14 @@ function middleCenterPosition(img, watermarkImg, scale = WATERMARK_SCALE) {
 module.exports.middleCenterPosition = middleCenterPosition;
 
 function transformation(watermarkBuffer, maxSize, positionFunction, scale) {
-  if(positionFunction && typeof(positionFunction) !== 'function') {
+  if (positionFunction && typeof (positionFunction) !== 'function') {
     throw new Error('Expected third argument (positionFunction) to be a function');
-  } else if(!positionFunction) {
+  } else if (!positionFunction) {
     positionFunction = bottomRightPosition;
   }
-  if(typeof(maxSize) !== 'number') {
+  if (typeof (maxSize) !== 'number') {
     maxSize = Number.MAX_VALUE;
-  } else if(maxSize <= 0) {
+  } else if (maxSize <= 0) {
     throw new Error('maxSize must be a positive integer');
   }
   var imageData = [];
@@ -55,7 +55,7 @@ function transformation(watermarkBuffer, maxSize, positionFunction, scale) {
       imageData.push(chunk);
       callback();
     },
-    flush: function(callback) {
+    flush: function (callback) {
       var img = new Image;
       img.src = Buffer.concat(imageData);
 
@@ -74,28 +74,28 @@ function transformation(watermarkBuffer, maxSize, positionFunction, scale) {
       ctx.drawImage(img, 0, 0, newSize.width, newSize.height);
 
       // If both a watermark buffer and position is defined, we can draw it
-      if(watermarkBuffer && positionFunction) {
+      if (watermarkBuffer && positionFunction) {
         var watermarkImg = new Image;
         watermarkImg.src = watermarkBuffer;
         var position = positionFunction(newSize, watermarkImg, scale);
         // Draw the watermark in the
         ctx.drawImage(watermarkImg,
-                      position.left,
-                      position.top,
-                      position.width,
-                      position.height);
+          position.left,
+          position.top,
+          position.width,
+          position.height);
       }
 
       // Size of the jpeg stream is just ~ 15% of the raw PNG buffer
       canvas.jpegStream({
         progressive: true
       })
-      .on('data', (chuck) => {
-        this.push(chuck);
-      })
-      .on('end', () => {
-        callback();
-      });
+        .on('data', (chuck) => {
+          this.push(chuck);
+        })
+        .on('end', () => {
+          callback();
+        });
     }
   });
 }

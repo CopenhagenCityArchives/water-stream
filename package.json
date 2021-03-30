@@ -24,8 +24,8 @@
   "homepage": "https://github.com/collections-online/water-stream#readme",
   "dependencies": {
     "canvas": "^2.7.0",
-    "node-cache": "^4.1.0",
-    "stream-buffers": "^3.0.1"
+    "node-cache": "^4.2.1",
+    "stream-buffers": "^3.0.2"
   },
   "devDependencies": {
     "heapdump": "^0.3.7"

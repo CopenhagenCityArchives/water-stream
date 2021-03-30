@@ -12,4 +12,4 @@ const server = http.createServer((req, res) => {
     let transformation = waterStream.transformation(watermarkBuffer);
     catRes.pipe(transformation).pipe(res);
   });
-}).listen(1337, '127.0.0.1');
+}).listen(1337);

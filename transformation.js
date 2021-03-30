@@ -1,7 +1,7 @@
 'use strict';
 
-var Canvas = require('canvas');
-var Image = Canvas.Image;
+var { createCanvas, Image } = require('canvas');
+var Image = Image;
 const Transform = require('stream').Transform;
 
 const WATERMARK_SCALE = 0.33; // 33% of the width of the thumbnail
@@ -69,7 +69,7 @@ function transformation(watermarkBuffer, maxSize, positionFunction, scale) {
         height: ratio < 1 ? maxSize : maxSize / ratio,
       };
 
-      var canvas = new Canvas(newSize.width, newSize.height);
+      var canvas = createCanvas(newSize.width, newSize.height);
       var ctx = canvas.getContext('2d');
       ctx.drawImage(img, 0, 0, newSize.width, newSize.height);
 

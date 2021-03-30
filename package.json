@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/collections-online/water-stream#readme",
   "dependencies": {
-    "canvas": "^1.6.2",
+    "canvas": "^2.7.0",
     "node-cache": "^4.1.0",
     "stream-buffers": "^3.0.1"
   },

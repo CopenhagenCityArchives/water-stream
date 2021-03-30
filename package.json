@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A transformation stream that applies watermarks to images without filesystem I/O",
   "main": "transformation.js",
+  "files": [ "transformation.js", "cached.js" ],
   "scripts": {
     "test": "node test/memory.js"
   },

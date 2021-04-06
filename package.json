@@ -1,8 +1,12 @@
 {
   "name": "water-stream",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A transformation stream that applies watermarks to images without filesystem I/O",
   "main": "transformation.js",
+  "files": [
+    "transformation.js",
+    "cached.js"
+  ],
   "scripts": {
     "test": "node test/memory.js"
   },
@@ -22,9 +26,9 @@
   },
   "homepage": "https://github.com/collections-online/water-stream#readme",
   "dependencies": {
-    "canvas": "^1.6.2",
-    "node-cache": "^4.1.0",
-    "stream-buffers": "^3.0.1"
+    "canvas": "^2.7.0",
+    "node-cache": "^4.2.1",
+    "stream-buffers": "^3.0.2"
   },
   "devDependencies": {
     "heapdump": "^0.3.7"
